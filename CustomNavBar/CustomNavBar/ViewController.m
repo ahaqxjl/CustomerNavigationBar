@@ -35,8 +35,15 @@
     [leftButton setImage:[UIImage imageNamed:@"MenuIcon"] forState:UIControlStateNormal];
     [view addSubview:leftButton];
     
-    UITextField *titleTextField = [[UITextField alloc] initWithFrame:frame];
+    CGRect textfieldFrame = frame;
+    textfieldFrame.origin.x = buttonMargin * 2 + buttonFrame.size.width;
+    textfieldFrame.size.width = frame.size.width - textfieldFrame.origin.x - buttonMargin;
+    textfieldFrame.size.height = buttonFrame.size.height;
+    textfieldFrame.origin.y = buttonFrame.origin.y;
+    UITextField *titleTextField = [[UITextField alloc] initWithFrame:textfieldFrame];
+    titleTextField.backgroundColor = [UIColor whiteColor];
     titleTextField.placeholder = @"Input text here";
+    [view addSubview:titleTextField];
     
     [self.navigationController.navigationBar addSubview:view];
     
